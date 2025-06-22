@@ -32,19 +32,34 @@ export const emails = [
 export default defineComponent({
   name: 'MarkedEmailsApp',
 
-  setup() {},
+  setup() {
+    const allEmails = ref(emails)
+    const query = ref('')
+
+    // Search should be debounced, but for the simplicity sake it is not :)
+    const markedEmails = computed(() => {
+      return allEmails.value.map((item) => {
+        return {
+          email: item,
+          marked: !!query.value && item.toLowerCase().includes(query.value.toLowerCase()),
+        }
+      })
+    })
+
+    return {
+      markedEmails,
+      query,
+    }
+  },
 
   template: `
     <div>
       <div class="form-group">
-        <input type="search" aria-label="Search" />
+        <input type="search" aria-label="Search" v-model.trim="query" />
       </div>
       <ul aria-label="Emails">
-        <li>
-          Eliseo@gardner.biz
-        </li>
-        <li class="marked">
-          Jayne_Kuhic@sydney.com
+        <li v-for="item in markedEmails" key="item.email" :class="{ marked: item.marked }">
+          {{ item.email }}
         </li>
       </ul>
     </div>
