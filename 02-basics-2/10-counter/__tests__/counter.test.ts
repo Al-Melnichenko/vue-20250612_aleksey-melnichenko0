@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import type { VueWrapper, DOMWrapper } from '@vue/test-utils'
-import CounterApp from '../CounterApp'
+import CounterApp from '../CounterApp.ts'
 
 describe('CounterApp', () => {
   let wrapper: VueWrapper
