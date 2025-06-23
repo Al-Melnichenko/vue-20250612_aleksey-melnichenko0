@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest'
 import type { MockedFunction } from 'vitest'
 import { createWrapperError, flushPromises, mount } from '@vue/test-utils'
 import type { VueWrapper, DOMWrapper } from '@vue/test-utils'
-import SelectedMeetupApp from '../SelectedMeetupApp.js'
+import SelectedMeetupApp from '../SelectedMeetupApp'
 import { getMeetup } from '../meetupsService.ts'
 import type { MeetupDTO } from '../meetups.types.ts'
 
